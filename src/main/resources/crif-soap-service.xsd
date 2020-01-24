@@ -1,0 +1,2373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.crif-online.ch/webservices/crifsoapservice/v1.00" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.crif-online.ch/webservices/crifsoapservice/v1.00" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="identifyAddressRequest" type="tns:TypeIdentifyAddressRequest">
+        <annotation>
+            <documentation>IdentifyAddress request</documentation>
+        </annotation>
+    </element>
+    <element name="identifyAddressResponse" type="tns:TypeIdentifyAddressResponse">
+        <annotation>
+            <documentation>IdentifyAddress response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeIdentifyAddressRequest">
+        <annotation>
+            <documentation>IdentifyAddressRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="searchedAddress" type="tns:AddressDescription"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeIdentifyAddressResponse">
+        <annotation>
+            <documentation>IdentifyAddressResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="addressMatchResult" type="tns:AddressMatchResult"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="addressInvestigationRequest" type="tns:TypeAddressInvestigationRequest">
+        <annotation>
+            <documentation>AddressInvestigation request</documentation>
+        </annotation>
+    </element>
+    <element name="addressInvestigationResponse" type="tns:TypeAddressInvestigationResponse">
+        <annotation>
+            <documentation>AddressInvestigation response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeAddressInvestigationRequest">
+        <annotation>
+            <documentation>AddressInvestigationRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="identifier" type="tns:Identifier" minOccurs="0"/>
+                    <element name="searchedAddress" type="tns:AddressDescription" minOccurs="0"/>
+                    <element name="targetReportFormat" type="tns:TargetReportFormat" minOccurs="0"/>
+                    <element name="requestHighestDeliverableAddress" type="xs:boolean" minOccurs="0"/>
+                    <element name="requestHouseholdAddresses" type="xs:boolean" minOccurs="0"/>
+                    <element name="requestKnownAddresses" type="xs:boolean" minOccurs="0"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeAddressInvestigationResponse">
+        <annotation>
+            <documentation>AddressInvestigationResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="addressMatchResult" type="tns:AddressMatchResult"/>
+                    <element name="searchedAddressDeliverability" type="tns:Deliverability"/>
+                    <element name="highestDeliverableAddress" type="tns:AddressWithDeliverability" minOccurs="0"/>
+                    <element name="knownAddresses" type="tns:AddressWithDeliverability" minOccurs="0" maxOccurs="unbounded"/>
+                    <element name="householdAddresses" type="tns:AddressWithDeliverability" minOccurs="0" maxOccurs="unbounded"/>    <!-- Version 1.9 -->
+                    <element name="report" type="xs:string" minOccurs="0"/>
+                    <element name="deceasedDate" type="xs:string" minOccurs="0"/><!-- Version 1.6 -->
+                    <element name="personStatus" type="tns:PersonStatus" minOccurs="0"/><!-- Version 1.6 -->
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="getReportRequest" type="tns:TypeGetReportRequest">
+        <annotation>
+            <documentation>GetReport request</documentation>
+        </annotation>
+    </element>
+    <element name="getReportResponse" type="tns:TypeGetReportResponse">
+        <annotation>
+            <documentation>GetReport response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeGetReportRequest">
+        <annotation>
+            <documentation>GetReport request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="searchedAddress" type="tns:AddressDescription" minOccurs="0"/>
+                    <element name="identifier" type="tns:Identifier" minOccurs="0"/>
+                    <element name="reportType" type="xs:string"/>
+                    <element name="targetReportFormat" type="tns:TargetReportFormat" minOccurs="0"/>
+                    <element name="idVerificationRequestData" type="tns:IdVerificationRequestData" minOccurs="0"/>    <!-- Version 1.5 -->
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeGetReportResponse">
+        <annotation>
+            <documentation>GetReport root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="decisionMatrix" type="tns:DecisionMatrix" minOccurs="0"/>
+                    <element name="addressMatchResult" type="tns:AddressMatchResult" minOccurs="0"/>
+                    <element name="reportDetails" type="tns:ReportDetails" nillable="false" minOccurs="0"/><!-- Version 1.2 -->
+                    <element name="report" type="xs:string" minOccurs="0"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="getArchivedReportRequest" type="tns:TypeGetArchivedReportRequest">
+        <annotation>
+            <documentation>GetArchivedReport request</documentation>
+        </annotation>
+    </element>
+    <element name="getArchivedReportResponse" type="tns:TypeGetArchivedReportResponse">
+        <annotation>
+            <documentation>GetArchivedReport response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeGetArchivedReportRequest">
+        <annotation>
+            <documentation>GetArchivedReport request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="archivingId" type="xs:long"/>
+                    <element name="targetFormat" type="tns:TargetReportFormat"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeGetArchivedReportResponse">
+        <annotation>
+            <documentation>GetArchivedReport root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="report" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="getDebtDetailsRequest" type="tns:TypeGetDebtDetailsRequest">
+        <annotation>
+            <documentation>GetDebtDetails request</documentation>
+        </annotation>
+    </element>
+    <element name="getDebtDetailsResponse" type="tns:TypeGetDebtDetailsResponse">
+        <annotation>
+            <documentation>GetDebtDetails response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeGetDebtDetailsRequest">
+        <annotation>
+            <documentation>GetDebtDetailsRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="identifier" type="tns:Identifier"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeGetDebtDetailsResponse">
+        <annotation>
+            <documentation>GetDebtDetailsResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="debts" type="tns:DebtEntry" minOccurs="0" maxOccurs="unbounded"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="orderOfflineReportRequest" type="tns:TypeOrderOfflineReportRequest">
+        <annotation>
+            <documentation>OrderOfflineReport request</documentation>
+        </annotation>
+    </element>
+    <element name="orderOfflineReportResponse" type="tns:TypeOrderOfflineReportResponse">
+        <annotation>
+            <documentation>OrderOfflineReport response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeOrderOfflineReportRequest">
+        <annotation>
+            <documentation>TypeOrderOfflineReportRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="orderAddress" type="tns:AddressDescription" minOccurs="0"/>
+                    <element name="identifier" type="tns:Identifier" minOccurs="0"/>
+                    <element name="offlineReportType" type="xs:string"/>
+                    <element name="binaryPOI" type="xs:string" minOccurs="0"/>
+                    <element name="binaryPOIType" type="tns:PoiType" minOccurs="0"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                    <element name="contactMail" type="xs:string" minOccurs="0"/>
+                    <element name="contactPhone" type="xs:string" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeOrderOfflineReportResponse">
+        <annotation>
+            <documentation>tns:TypeOrderOfflineReportResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="orderReferenceNumber" type="xs:int"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="getListOfReadyOfflineReportsRequest" type="tns:TypeGetListOfReadyOfflineReportsRequest">
+        <annotation>
+            <documentation>GetListOfReadyOfflineReports request</documentation>
+        </annotation>
+    </element>
+    <element name="getListOfReadyOfflineReportsResponse" type="tns:TypeGetListOfReadyOfflineReportsResponse">
+        <annotation>
+            <documentation>GetListOfReadyOfflineReports response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeGetListOfReadyOfflineReportsRequest">
+        <annotation>
+            <documentation>TypeGetListOfReadyOfflineReportsRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeGetListOfReadyOfflineReportsResponse">
+        <annotation>
+            <documentation>TypeGetListOfReadyOfflineReportsResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="offlineReportIdentifiers" type="tns:OfflineReportIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="pollOfflineReportResponseRequest" type="tns:TypePollOfflineReportResponseRequest">
+        <annotation>
+            <documentation>PollOfflineReportResponse request</documentation>
+        </annotation>
+    </element>
+    <element name="pollOfflineReportResponseResponse" type="tns:TypePollOfflineReportResponseResponse">
+        <annotation>
+            <documentation>PollOfflineReportResponse response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypePollOfflineReportResponseRequest">
+        <annotation>
+            <documentation>TypePollOfflineReportResponseRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="orderReferenceNumber" type="xs:int"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypePollOfflineReportResponseResponse">
+        <annotation>
+            <documentation>TypePollOfflineReportResponseResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="offlineReportStatus" type="tns:OfflineReportStatus" minOccurs="0"/>
+                    <element name="report" type="xs:string" minOccurs="0"/>
+                    <element name="debts" type="tns:DebtEntry" minOccurs="0" maxOccurs="unbounded"/>
+                    <element name="offlineReportIdentifier" type="tns:OfflineReportIdentifier" minOccurs="0"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                    <element name="rejectionReason" type="tns:OfflineReportRejectionReason" minOccurs="0"/>
+                    <!--  Since v 1.11 -->
+                    <element name="numberOfOriginalDocuments" type="xs:integer" minOccurs="0"/>
+                    <!--  Since v 1.11 -->
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="idVerificationRequest" type="tns:TypeIdVerificationRequest">
+        <annotation>
+            <documentation>IdVerification request</documentation>
+        </annotation>
+    </element>
+    <element name="idVerificationResponse" type="tns:TypeIdVerificationResponse">
+        <annotation>
+            <documentation>IdVerification response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeIdVerificationRequest">
+        <annotation>
+            <documentation>TypeIdVerificationRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="idVerificationRequestData" type="tns:IdVerificationRequestData" minOccurs="0"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeIdVerificationResponse">
+        <annotation>
+            <documentation>TypeIdVerificationResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="idVerificationResponseData" type="tns:IdVerificationResponseData" minOccurs="0"/>
+                    <element name="decisionMatrix" type="tns:DecisionMatrix" minOccurs="0"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxx  SUBMIT DATA ISSUE  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="submitDataIssueRequest" type="tns:TypeSubmitDataIssueRequest">   <!-- Version 1.12 -->
+        <annotation>
+            <documentation>SubmitDataIssue request</documentation>
+        </annotation>
+    </element>
+    <element name="submitDataIssueResponse" type="tns:TypeSubmitDataIssueResponse">   <!-- Version 1.12 -->
+        <annotation>
+            <documentation>SubmitDataIssue response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeSubmitDataIssueRequest">
+        <annotation>
+            <documentation>TypeSubmitDataIssueRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="title" type="xs:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+                    <element name="description" type="xs:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+                    <element name="identifier" type="tns:Identifier" minOccurs="0" maxOccurs="1"/>
+                    <element name="archiveId" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+                    <element name="contactFullName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <element name="contactMail" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <element name="contactPhone" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeSubmitDataIssueResponse">
+        <annotation>
+            <documentation>TypeSubmitDataIssueResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="issueReference" type="xs:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxx  CANCEL DATA ISSUE  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="cancelDataIssueRequest" type="tns:TypeCancelDataIssueRequest">  <!-- Version 1.12 -->
+        <annotation>
+            <documentation>CancelDataIssue request</documentation>
+        </annotation>
+    </element>
+    <element name="cancelDataIssueResponse" type="tns:TypeCancelDataIssueResponse">  <!-- Version 1.12 -->
+        <annotation>
+            <documentation>CancelDataIssue response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeCancelDataIssueRequest">
+        <annotation>
+            <documentation>TypeCancelDataIssueRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="issueReference" type="xs:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeCancelDataIssueResponse">
+        <annotation>
+            <documentation>TypeCancelDataIssueResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxx  GET DATA ISSUE STATUS  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="getDataIssueStatusRequest" type="tns:TypeGetDataIssueStatusRequest">      <!-- Version 1.12 -->
+        <annotation>
+            <documentation>GetDataIssueStatus request</documentation>
+        </annotation>
+    </element>
+    <element name="getDataIssueStatusResponse" type="tns:TypeGetDataIssueStatusResponse"><!-- Version 1.12 -->
+        <annotation>
+            <documentation>GetDataIssueStatus response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeGetDataIssueStatusRequest">
+        <annotation>
+            <documentation>TypeGetDataIssueStatusRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="issueReference" type="xs:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeGetDataIssueStatusResponse">
+        <annotation>
+            <documentation>TypeGetDataIssueStatusResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="identifier" type="tns:Identifier" minOccurs="0"/>
+                    <element name="dataIssueStatus" type="tns:DataIssueStatus" nillable="false" minOccurs="1" maxOccurs="1"/>
+                    <element name="comment" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxx  CREATE JOB EschKG  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="createJobESchKgRequest" type="tns:TypeCreateJobESchKgRequest">
+        <annotation>
+            <documentation>createJobESchKgRequest request</documentation>
+        </annotation>
+        <!-- Version 1.14 -->
+    </element>
+    <element name="createJobESchKgResponse" type="tns:TypeCreateJobESchKgResponse">
+        <annotation>
+            <documentation>TypeCreateJobESchKg response</documentation>
+        </annotation>
+        <!-- Version 1.14 -->
+    </element>
+    <complexType name="TypeCreateJobESchKgRequest">
+        <annotation>
+            <documentation>TypeCreateJobESchKg request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="externalId" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="caseGroup" type="xs:string" nillable="true" minOccurs="0"/>
+                    <element name="caseGroupType" type="xs:string" nillable="true" minOccurs="0"/>
+                    <element name="representative" type="xs:string" nillable="true" minOccurs="0"/>
+                    <element name="enforcementStatus" nillable="true" type="tns:EnforcementStatus" minOccurs="0"/>
+                    <element name="address" type="tns:AddressDescription" nillable="true"/>
+                    <element name="legalFormTypeOriginal" type="xs:string" minOccurs="0" nillable="true"/>
+                    <element name="jobData" nillable="true" type="tns:ESchKgJobData"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="TypeCreateJobESchKgResponse">
+        <annotation>
+            <documentation>TypeCreateJobESchKgResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="orderData" type="tns:ESchKgOrderData" minOccurs="0"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxx  GET STATUS EschKG  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="getStatusESchKgRequest" type="tns:TypeGetStatusESchKgRequest">
+        <annotation>
+            <documentation>TypeGetStatusESchKg request</documentation>
+        </annotation>
+        <!-- Version 1.14 -->
+    </element>
+    <element name="getStatusESchKgResponse" type="tns:TypeGetStatusESchKgResponse">
+        <annotation>
+            <documentation>getStatusESchKg response</documentation>
+        </annotation>
+        <!-- Version 1.14 -->
+    </element>
+    <complexType name="TypeGetStatusESchKgRequest">
+        <annotation>
+            <documentation>TypeGetStatusESchKg request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="externalId" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="orderId" type="xs:string" nillable="true" minOccurs="0"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="TypeGetStatusESchKgResponse">
+        <annotation>
+            <documentation>TypeGetStatusESchKgResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="orderData" type="tns:ESchKgOrderData" minOccurs="0"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxx  GET LAST DOCUMENT EschKG  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="getLastDocumentESchKgRequest" type="tns:TypeGetLastDocumentESchKgRequest">
+        <annotation>
+            <documentation>getLastDocumentESchKg request</documentation>
+        </annotation>
+        <!-- Version 1.14 -->
+    </element>
+    <element name="getLastDocumentESchKgResponse" type="tns:TypeGetLastDocumentESchKgResponse">
+        <annotation>
+            <documentation>getLastDocumentESchKge response</documentation>
+        </annotation>
+        <!-- Version 1.14 -->
+    </element>
+    <complexType name="TypeGetLastDocumentESchKgRequest">
+        <annotation>
+            <documentation>TypeGetLastDocumentESchKg request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="externalId" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="orderId" type="xs:string" nillable="true" minOccurs="0"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="TypeGetLastDocumentESchKgResponse">
+        <annotation>
+            <documentation>TypeGetLastDocumentESchKgResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="document" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxx  GET WEB ACCESS TOKEN EschKG  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="getWebAccessTokenESchKgRequest" type="tns:TypeGetWebAccessTokenESchKgRequest">
+        <annotation>
+            <documentation>TypeGetWebAccessTokenESchKgRequest request</documentation>
+        </annotation>
+        <!-- Version 1.14 -->
+    </element>
+    <element name="getWebAccessTokenESchKgResponse" type="tns:TypeGetWebAccessTokenESchKgResponse">
+        <annotation>
+            <documentation>TypeGetWebAccessTokenESchKg response</documentation>
+        </annotation>
+        <!-- Version 1.14 -->
+    </element>
+    <complexType name="TypeGetWebAccessTokenESchKgRequest">
+        <annotation>
+            <documentation>TypeGetLastDocumentESchKg request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="validUntil" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="validTimes" type="xs:integer" minOccurs="0"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="TypeGetWebAccessTokenESchKgResponse">
+        <annotation>
+            <documentation>TypeGetWebAccessTokenESchKgResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="webAccessToken" type="xs:string" nillable="true" minOccurs="0" maxOccurs="1"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxx  CHECK OFFLINE REPORT OFFICE  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <element name="checkOfflineReportOfficeRequest" type="tns:TypeCheckOfflineReportOfficeRequest">   <!-- Version 1.15 -->
+        <annotation>
+            <documentation>SubmitDataIssue request</documentation>
+        </annotation>
+    </element>
+    <element name="checkOfflineReportOfficeResponse" type="tns:TypeCheckOfflineReportOfficeResponse">   <!-- Version 1.15 -->
+        <annotation>
+            <documentation>SubmitDataIssue response</documentation>
+        </annotation>
+    </element>
+    <complexType name="TypeCheckOfflineReportOfficeRequest">
+        <annotation>
+            <documentation>TypeCheckOfflineReportOfficeRequest request root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseRequest">
+                <sequence>
+                    <element name="location" type="tns:Location" minOccurs="0"/>
+                    <element name="offlineReportType" type="tns:OfflineReportType" minOccurs="1"/>
+                    <element name="additionalInput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="TypeCheckOfflineReportOfficeResponse">
+        <annotation>
+            <documentation>TypeCheckOfflineReportOfficeResponse root element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:TypeBaseResponse">
+                <sequence>
+                    <element name="poiType" type="xs:string" nillable="false" minOccurs="1" maxOccurs="1"/>
+                    <element name="officeId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                    <element name="additionalOutput" type="tns:KeyValuePair" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+    <element name="error" type="tns:Error"/>
+    <complexType name="Error">
+        <annotation>
+            <documentation>Error structure definition</documentation>
+        </annotation>
+        <all>
+            <element name="code" type="xs:int">
+                <annotation>
+                    <documentation>
+                        100 Login Error 200 Authorization Error 400 Invalid Field 500 Server Error
+                    </documentation>
+                </annotation>
+            </element>
+            <element name="messageText" type="xs:string"/>
+        </all>
+    </complexType>
+    <complexType name="TypeBaseRequest">
+        <annotation>
+            <documentation>GetReport request root element</documentation>
+        </annotation>
+        <sequence>
+            <element name="control" type="tns:Control"/>
+            <element name="identityDescriptor" type="tns:IdentityDescriptor"/>
+            <element name="referenceNumber" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="TypeBaseResponse">
+        <annotation>
+            <documentation>GetReport request root element</documentation>
+        </annotation>
+        <sequence>
+            <element name="archivingId" type="xs:long" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="Control">
+        <annotation>
+            <documentation>Control element</documentation>
+        </annotation>
+        <all>
+            <element name="majorVersion" type="xs:int"/>
+            <element name="minorVersion" type="xs:int"/>
+        </all>
+    </complexType>
+    <complexType name="AddressWithDeliverability">
+        <annotation>
+            <documentation>AddressWithDeliverability element</documentation>
+        </annotation>
+        <all>
+            <element name="address" type="tns:AddressDescription"/>
+            <element name="deliverability" type="tns:Deliverability"/>
+            <element name="addressInputDate" type="xs:string"/>
+            <element name="addressId" type="tns:Identifier"/>
+        </all>
+    </complexType>
+    <complexType name="IdentityDescriptor">
+        <annotation>
+            <documentation>IdentityDescriptor element</documentation>
+        </annotation>
+        <all>
+            <element name="userName" type="xs:string"/>
+            <element name="password" type="xs:string"/>
+            <element name="endUserId" type="xs:string" minOccurs="0"/>
+            <element name="costGroupId" type="xs:string" minOccurs="0"/>
+        </all>
+    </complexType>
+    <complexType name="KeyValuePair">
+        <annotation>
+            <documentation>IdentityDescriptor element</documentation>
+        </annotation>
+        <all>
+            <element name="key" type="xs:string"/>
+            <element name="value" type="xs:string"/>
+        </all>
+    </complexType>
+    <complexType name="AddressDescription" abstract="true">
+        <annotation>
+            <documentation>AddressDescription element</documentation>
+        </annotation>
+        <sequence>
+            <element name="location" type="tns:Location" minOccurs="0"/>
+            <element name="contactItems" type="tns:ContactItem" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="PersonAddressDescription">
+        <annotation>
+            <documentation>PersonAddressDescription element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:AddressDescription">
+                <sequence>
+                    <element name="firstName" type="xs:string" minOccurs="0"/>
+                    <element name="lastName" type="xs:string" minOccurs="0"/>
+                    <element name="maidenName" type="xs:string" nillable="false" minOccurs="0"/><!-- Version up to 1.2 -->
+                    <element name="middleName" type="xs:string" nillable="false" minOccurs="0"/>  <!-- Version 1.3 -->
+                    <element name="coName" type="xs:string" nillable="false" minOccurs="0"/>   <!-- Version 1.4 -->
+                    <element name="sex" type="tns:Sex" minOccurs="0"/>
+                    <element name="birthDate" type="xs:string" minOccurs="0"/>
+                    <element name="nationality" type="xs:string" minOccurs="0"/>   <!-- Version 1.13 -->
+
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="CompanyAddressDescription">
+        <annotation>
+            <documentation>CompanyAddressDescription element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:AddressDescription">
+                <sequence>
+                    <element name="companyName" type="xs:string" minOccurs="0"/>
+                    <element name="coName" type="xs:string" nillable="false" minOccurs="0"/>     <!-- Version 1.2 -->
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="Identifier">
+        <annotation>
+            <documentation>Identifier element</documentation>
+        </annotation>
+        <all>
+            <element name="identifierText" type="xs:string"/>
+            <element name="identifierType" type="tns:IdentifierType"/>
+        </all>
+    </complexType>
+    <complexType name="Location">
+        <annotation>
+            <documentation>Location element</documentation>
+        </annotation>
+        <all>
+            <element name="street" type="xs:string" minOccurs="0"/>
+            <element name="houseNumber" type="xs:string" minOccurs="0"/>
+            <element name="apartment" type="xs:string" nillable="false" minOccurs="0"/>  <!-- Version 1.3 -->
+            <element name="zip" type="xs:string" minOccurs="0"/>
+            <element name="city" type="xs:string" minOccurs="0"/>
+            <element name="regionCode" type="xs:string" nillable="false" minOccurs="0"/>  <!-- Version 1.3 -->
+            <element name="subRegionCode" type="xs:string" nillable="false" minOccurs="0"/>         <!-- Version 1.3 -->
+            <element name="country" type="xs:string" minOccurs="0"/>
+        </all>
+    </complexType>
+    <complexType name="ContactItem">
+        <annotation>
+            <documentation>ContactItem element</documentation>
+        </annotation>
+        <all>
+            <element name="contactText" type="xs:string" minOccurs="0"/>
+            <element name="contactType" type="tns:ContactType" minOccurs="0"/>
+        </all>
+    </complexType>
+    <complexType name="AddressMatchResult">
+        <annotation>
+            <documentation>AddressMatchResult element</documentation>
+        </annotation>
+        <sequence>
+            <element name="addressMatchResultType" type="tns:AddressMatchResultType"/>
+            <element name="locationIdentification" type="tns:LocationIdentification" minOccurs="0"/>
+            <element name="nameHint" type="tns:NameHint" minOccurs="0"/>
+            <element name="foundAddress" type="tns:MatchedAddress" minOccurs="0"/>
+            <element name="candidates" type="tns:Candidate" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="character" type="tns:CharacterType" nillable="false" minOccurs="0" maxOccurs="1"/>     <!-- Version:1.1 -->
+        </sequence>
+    </complexType>
+    <complexType name="Candidate">
+        <annotation>
+            <documentation>Candidate element</documentation>
+        </annotation>
+        <sequence>
+            <element name="address" type="tns:AddressDescription"/>
+            <element name="identifiers" type="tns:Identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="candidateRank" type="xs:int"/>
+            <element name="groupId" type="xs:int"/>
+        </sequence>
+    </complexType>
+    <complexType name="MatchedAddress">
+        <annotation>
+            <documentation>MatchedAddress element</documentation>
+        </annotation>
+        <sequence>
+            <element name="address" type="tns:AddressDescription"/>
+            <element name="identificationType" type="tns:IdentificationType"/>
+            <element name="identifiers" type="tns:Identifier" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="LocationIdentification">
+        <annotation>
+            <documentation>LocationIdentification element</documentation>
+        </annotation>
+        <all>
+            <element name="locationIdentificationType" type="tns:LocationIdentificationType"/>
+            <element name="houseType" type="xs:string" minOccurs="0"/>
+            <element name="requestLocationNormalized" type="tns:Location" minOccurs="0"/>
+        </all>
+    </complexType>
+    <complexType name="DecisionMatrix">
+        <annotation>
+            <documentation>DecisionMatrix element</documentation>
+        </annotation>
+        <sequence>
+            <element name="decision" type="tns:Decision"/>
+            <element name="decisionText" type="xs:string"/>
+            <element name="subdecisions" type="tns:Subdecision" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="ratings" type="tns:Rating" minOccurs="0" maxOccurs="unbounded"/>    <!-- Version 1.2 -->
+            <element name="creditLimit" type="xs:integer" minOccurs="0"/>    <!-- Version 1.2 -->
+        </sequence>
+    </complexType>
+    <complexType name="Subdecision">
+        <annotation>
+            <documentation>Subdecision element</documentation>
+        </annotation>
+        <all>
+            <element name="type" type="xs:string"/>
+            <element name="decision" type="tns:Decision"/>
+            <element name="value" type="xs:string"/>
+            <element name="infoText" type="xs:string" minOccurs="0"/>
+        </all>
+    </complexType>
+    <complexType name="Rating">
+        <annotation>
+            <documentation>Rating element</documentation>
+        </annotation>
+        <sequence>
+            <element name="ratingType" type="xs:string"/>
+            <element name="rating" type="xs:string"/>
+        </sequence>
+    </complexType>
+    <complexType name="DebtEntry">
+        <annotation>
+            <documentation>DebtEntry element</documentation>
+        </annotation>
+        <all>
+            <element name="riskClass" type="tns:RiskClass"/>
+            <element name="dateOpen" type="xs:string"/>
+            <element name="dateClose" type="xs:string" minOccurs="0"/>
+            <element name="amount" type="tns:Amount" minOccurs="0"/>
+            <element name="amountOpen" type="tns:Amount" minOccurs="0"/>
+            <element name="debtType" type="tns:DebtType"/>
+            <element name="paymentStatus" type="tns:PaymentStatus"/>
+            <element name="paymentStatusText" type="xs:string"/>
+            <element name="origin" type="xs:string" minOccurs="0"/>
+            <element name="text" type="xs:string" minOccurs="0"/>
+        </all>
+    </complexType>
+    <complexType name="Amount">
+        <annotation>
+            <documentation>Amount element</documentation>
+        </annotation>
+        <all>
+            <element name="amount" type="xs:double"/> <!-- Version 1.2 -->
+            <element name="currency" type="xs:string"/>
+        </all>
+    </complexType>
+    <complexType name="OfflineReportIdentifier">
+        <annotation>
+            <documentation>OfflineReportIdentifier element</documentation>
+        </annotation>
+        <all>
+            <element name="orderReferenceNumber" type="xs:int"/>
+            <element name="referenceNumber" type="xs:string" minOccurs="0"/>
+        </all>
+    </complexType>
+    <complexType name="ReportDetails">
+        <annotation>
+            <documentation>Report detailed structure</documentation>
+        </annotation>
+        <sequence>
+            <element name="debts" type="tns:DebtEntry" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="companyBaseData" type="tns:CompanyBaseData" minOccurs="0"/>
+            <element name="paymentDelay" type="tns:PaymentDelay" minOccurs="0"/>
+            <element name="organizationPositionList" type="tns:OrganizationPositionList" minOccurs="0"/>
+            <element name="whoOwnsWhom" type="tns:WhoOwnsWhom" minOccurs="0"/>
+            <element name="furtherRelations" type="tns:FurtherRelations" minOccurs="0"/>
+            <element name="publicationList" type="tns:PublicationList" minOccurs="0"/>
+            <element name="branchOfficeList" type="tns:BranchOfficeList" minOccurs="0"/>
+            <element name="financialStatements" type="tns:FinancialStatement" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="financialStatementsGroup" type="tns:FinancialStatement" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="addressHistory" type="tns:AddressWithDeliverability" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="businessIndustryLicenses" type="tns:BusinessIndustryLicense" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="scoreAnalysis" type="tns:ScoreAnalysis" minOccurs="0"/>
+            <element name="complianceCheckResult" type="tns:ComplianceCheckResult" nillable="false" minOccurs="0"/>
+            <!-- Since v 1.4 -->
+            <element name="idVerificationResponseData" type="tns:IdVerificationResponseData" nillable="false" minOccurs="0"/>
+            <!-- Since v 1.5 -->
+            <element name="schufaResponseData" type="tns:SchufaResponseData" nillable="false" minOccurs="0"/>
+            <!-- Since v 1.7 -->
+            <element name="controlPersons" type="tns:AddressDescription" minOccurs="0" maxOccurs="unbounded"/>
+            <!-- Since v 1.10 -->
+            <element name="controlPersonsExt" type="tns:ControlPerson" minOccurs="0" maxOccurs="unbounded"/>
+            <!-- Since v 1.13 -->
+        </sequence>
+    </complexType>
+    <complexType name="ControlPerson">
+        <annotation>
+            <documentation>ControlPerson element</documentation>
+        </annotation>
+        <sequence>
+            <element name="controlPersonAddress" type="tns:AddressDescription" minOccurs="1"/>
+            <element name="controlPersonType" type="tns:ControlPersonType" minOccurs="1"/>
+        </sequence>
+    </complexType>
+    <complexType name="ComplianceCheckResult">
+        <annotation>
+            <documentation>ComplianceCheckResult element</documentation>
+        </annotation>
+        <sequence>
+            <element name="checkedEntity" type="tns:ComplianceCheckedEntity" minOccurs="0"/>
+            <element name="listDescriptions" type="tns:ComplianceListDescription" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="ComplianceCheckedEntity">
+        <annotation>
+            <documentation>ComplianceCheckedEntity element</documentation>
+        </annotation>
+        <sequence>
+            <element name="checkedAddress" type="tns:AddressDescription" minOccurs="1"/>
+            <element name="relationType" type="xs:string" minOccurs="1"/>
+            <element name="foundEntities" type="tns:ComplianceFoundEntity" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="checkedEntities" type="tns:ComplianceCheckedEntity" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="ComplianceFoundEntity">
+        <annotation>
+            <documentation>ComplianceFoundEntity element</documentation>
+        </annotation>
+        <sequence>
+            <element name="listDescription" type="tns:ComplianceListDescription" minOccurs="1"/>
+            <element name="matchInformation" type="tns:ComplianceMatchInformation" minOccurs="1"/>
+            <element name="crifRefId" type="xs:int" minOccurs="1"/>
+            <element name="primaryName" type="xs:string" minOccurs="1"/>
+            <element name="furtherNames" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="birthdates" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="age" type="xs:string" minOccurs="0"/>
+            <element name="titles" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="country" type="xs:string" minOccurs="0"/>
+            <element name="furtherCountries" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="birthplaces" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="passportsOrIds" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="knownAddresses" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="keywords" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="additionalInformations" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="ComplianceListDescription">
+        <annotation>
+            <documentation>ComplianceListDescription element</documentation>
+        </annotation>
+        <sequence>
+            <element name="category" type="xs:string" minOccurs="1"/>
+            <element name="name" type="xs:string" minOccurs="1"/>
+            <element name="publishingOrganization" type="xs:string" minOccurs="1"/>
+            <element name="dateLastUpdated" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="ComplianceMatchInformation">
+        <annotation>
+            <documentation>ComplianceMatchInformation element</documentation>
+        </annotation>
+        <sequence>
+            <element name="confidenceName" type="xs:int" minOccurs="1"/>
+            <element name="confidenceBirthdate" type="xs:int" minOccurs="1"/>
+            <element name="matchedName" type="xs:string" minOccurs="0"/>
+            <element name="matchedBirthdate" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="ScoreAnalysis">
+        <annotation>
+            <documentation>ScoreAnalysis element</documentation>
+        </annotation>
+        <sequence>
+            <element name="scoreScaleRange" type="tns:Range" minOccurs="0"/>
+            <element name="score" type="xs:int"/>
+            <element name="averageScoreIndustry" type="xs:integer" minOccurs="0"/>
+            <element name="averageScoreAll" type="xs:integer" minOccurs="0"/>
+            <element name="scoreDecisionRanges" type="tns:ScoreDecisionRange" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="ScoreDecisionRange">
+        <annotation>
+            <documentation>ScoreDecisionRange element</documentation>
+        </annotation>
+        <sequence>
+            <element name="scoreRange" type="tns:Range"/>
+            <element name="decision" type="tns:Decision"/>
+        </sequence>
+    </complexType>
+    <complexType name="BusinessIndustryLicense">
+        <annotation>
+            <documentation>BusinessIndustryLicense element</documentation>
+        </annotation>
+        <sequence>
+            <element name="industryName" type="xs:string"/>
+            <element name="industryCode" type="tns:IndustryCode" minOccurs="0"/>
+            <element name="issuedTo" type="xs:string" minOccurs="0"/>
+            <element name="period" type="tns:Period" minOccurs="0"/>
+            <element name="status" type="tns:BusinessIndustryLicenseStatus"/>
+        </sequence>
+    </complexType>
+    <complexType name="IndustryCode">
+        <annotation>
+            <documentation>IndustryCode element</documentation>
+        </annotation>
+        <sequence>
+            <element name="type" type="xs:string"/>
+            <element name="code" type="xs:string"/>
+            <element name="codeDescription" type="xs:string" minOccurs="0"/>
+            <element name="isMainIndustryCode" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="period" type="tns:Period" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="FinancialStatement">
+        <annotation>
+            <documentation>FinancialBalance element</documentation>
+        </annotation>
+        <sequence>
+            <element name="financialReportingStandard" type="xs:string"/>
+            <element name="companyName" type="xs:string"/>
+            <element name="currencyCode" type="xs:string"/>
+            <element name="period" type="tns:Period"/>
+            <element name="balanceSheet" type="tns:FinancialStatementElement" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="profitAndLoss" type="tns:FinancialStatementElement" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="cashFlow" type="tns:FinancialStatementElement" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="furtherFigures" type="tns:FinancialStatementElement" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="creditRatios" type="tns:CreditRatio" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="FinancialStatementElement">
+        <annotation>
+            <documentation>FinancialStatementElement element</documentation>
+        </annotation>
+        <sequence>
+            <element name="id" type="xs:int"/>
+            <element name="parentId" type="xs:integer" minOccurs="0"/>
+            <element name="identifier" type="xs:string"/>
+            <element name="identifierText" type="xs:string"/>
+            <element name="value" type="xs:decimal" minOccurs="0"/>
+            <element name="position" type="xs:int"/>
+        </sequence>
+    </complexType>
+    <complexType name="CreditRatio">
+        <annotation>
+            <documentation>CreditRatio element</documentation>
+        </annotation>
+        <sequence>
+            <element name="creditRatioIdentifier" type="xs:string"/>
+            <element name="value" type="xs:double"/>
+        </sequence>
+    </complexType>
+    <complexType name="BranchOfficeList">
+        <annotation>
+            <documentation>BranchOfficeList element</documentation>
+        </annotation>
+        <sequence>
+            <element name="branchOffices" type="tns:BranchOfficeListItem" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="isTruncated" type="xs:boolean"/>
+        </sequence>
+    </complexType>
+    <complexType name="BranchOfficeListItem">
+        <annotation>
+            <documentation>BranchOfficeListItem element</documentation>
+        </annotation>
+        <sequence>
+            <element name="address" type="tns:CompanyAddressDescription" minOccurs="0"/>
+            <element name="description" type="xs:string" minOccurs="0"/>
+            <element name="period" type="tns:Period" minOccurs="0"/>
+            <element name="registered" type="tns:NullableBoolean" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="PublicationList">
+        <annotation>
+            <documentation>PublicationList element</documentation>
+        </annotation>
+        <sequence>
+            <element name="publications" type="tns:Publication" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="isTruncated" type="xs:boolean"/>
+        </sequence>
+    </complexType>
+    <complexType name="Publication">
+        <annotation>
+            <documentation>Publication element</documentation>
+        </annotation>
+        <sequence>
+            <element name="publicationDate" type="xs:string"/>
+            <element name="publicationCategoryOriginal" type="xs:string" minOccurs="0"/>
+            <element name="publicationCategory" type="tns:PublicationCategory"/>
+            <element name="publicationLabels" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="language" type="xs:string" minOccurs="0"/>
+            <element name="publicationRegion" type="xs:string" minOccurs="0"/>
+            <element name="text" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="FurtherRelations">
+        <annotation>
+            <documentation>FurtherRelations element</documentation>
+        </annotation>
+        <sequence>
+            <element name="obviousRelations" type="tns:CompanyBaseData" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="probableRelations" type="tns:CompanyBaseData" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="samePhoneNumber" type="tns:CompanyBaseData" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="WhoOwnsWhom">
+        <annotation>
+            <documentation>WhoOwnsWhom element</documentation>
+        </annotation>
+        <sequence>
+            <element name="wowAddresses" type="tns:WowAddress" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="wowRelations" type="tns:WowRelation" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="WowAddress">
+        <annotation>
+            <documentation>WowAddress element</documentation>
+        </annotation>
+        <sequence>
+            <element name="id" type="xs:int"/>
+            <element name="address" type="tns:AddressDescription"/>
+            <element name="identifiers" type="tns:Identifier" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="hasDebts" type="tns:HasDebts" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="WowRelation">
+        <annotation>
+            <documentation>WowRelation element</documentation>
+        </annotation>
+        <sequence>
+            <element name="owner" type="xs:int"/>
+            <element name="ownedSubject" type="xs:int"/>
+            <element name="isMajorityOwner" type="xs:boolean"/>
+            <element name="capitalShare" type="xs:decimal" minOccurs="0"/>
+            <element name="voteShare" type="xs:decimal" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="OrganizationPositionList">
+        <annotation>
+            <documentation>OrganizationPositionList element</documentation>
+        </annotation>
+        <sequence>
+            <element name="organizationPositions" type="tns:OrganizationPosition" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="isTruncated" type="xs:boolean"/>
+        </sequence>
+    </complexType>
+    <complexType name="OrganizationPosition">
+        <annotation>
+            <documentation>OrganizationPosition element</documentation>
+        </annotation>
+        <sequence>
+            <element name="firstName" type="xs:string" minOccurs="0"/>
+            <element name="name" type="xs:string"/>
+            <element name="nationality" type="xs:string" minOccurs="0"/>
+            <element name="homeTown" type="xs:string" minOccurs="0"/>
+            <element name="city" type="xs:string" minOccurs="0"/>
+            <element name="highestFunction" type="tns:OrganizationPositionFunction"/>
+            <element name="furtherFunctions" type="tns:OrganizationPositionFunction" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="share" type="xs:decimal" minOccurs="0"/>
+            <element name="signatureType" type="tns:SignatureType" minOccurs="0"/>
+            <element name="signatureOriginal" type="xs:string" minOccurs="0"/>
+            <element name="period" type="tns:Period"/>
+            <element name="addressId" type="tns:Identifier" minOccurs="0"/>
+            <element name="hasDebts" type="tns:HasDebts" minOccurs="0"/>
+            <element name="nrOfPositions" type="xs:integer" minOccurs="0"/>
+            <element name="nrOfPositionsBankrupt" type="xs:integer" minOccurs="0"/>
+            <element name="birthDate" type="xs:string" minOccurs="0"/>
+            <!-- since 1.8 -->
+            <element name="organizationPositions" type="tns:OrganizationPosition" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="OrganizationPositionFunction">
+        <annotation>
+            <documentation>OrganizationPositionFunction element</documentation>
+        </annotation>
+        <sequence>
+            <element name="functionType" type="tns:FunctionType"/>
+            <element name="functionTypeOriginal" type="xs:string" minOccurs="0"/>
+            <element name="functionPriority" type="xs:integer" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="PaymentDelay">
+        <annotation>
+            <documentation>PaymentDelay structure</documentation>
+        </annotation>
+        <sequence>
+            <element name="inTimeRatio" type="xs:decimal" minOccurs="0"/>
+            <element name="avgDelayShortTerm" type="xs:integer" minOccurs="0"/>
+            <element name="avgDelayLongTerm" type="xs:integer" minOccurs="0"/>
+            <element name="paymentType" type="xs:string" minOccurs="0"/>
+            <element name="paymentExpectedType" type="tns:PaymentExpectedType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="CompanyBaseData">
+        <annotation>
+            <documentation>CompanyInfo element</documentation>
+        </annotation>
+        <sequence>
+            <element name="mainAddress" type="tns:CompanyAddressDescription"/>
+            <element name="companyRegistrationData" type="tns:CompanyRegistrationData" minOccurs="0"/>
+            <element name="companyDetailData" type="tns:CompanyDetailData" minOccurs="0"/>
+            <element name="companyHistoryItems" type="tns:CompanyHistoryItem" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="registryType" type="tns:RegistryType"/>
+            <element name="activityStatus" type="tns:ActivityStatus"/>
+            <element name="activityStatusOriginal" type="xs:string" minOccurs="0"/>
+            <element name="legalFormType" type="tns:LegalFormType"/>
+            <element name="legalFormTypeOriginal" type="xs:string" minOccurs="0"/>
+            <element name="legalFormText" type="xs:string" minOccurs="0"/>
+            <element name="identifiers" type="tns:Identifier" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="CompanyHistoryItem">
+        <annotation>
+            <documentation>CompanyHistoryItem element</documentation>
+        </annotation>
+        <sequence>
+            <element name="type" type="tns:CompanyHistoryItemType"/>
+            <element name="period" type="tns:Period"/>
+        </sequence>
+    </complexType>
+    <complexType name="CompanyHistoryItemActivityStatus">
+        <annotation>
+            <documentation>CompanyHistoryItemActivityStatus element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:CompanyHistoryItem">
+                <sequence>
+                    <element name="activityStatus" type="tns:ActivityStatus"/>
+                    <element name="activityStatusOriginal" type="xs:string" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="CompanyHistoryItemAddress">
+        <annotation>
+            <documentation>CompanyHistoryItemAddress element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:CompanyHistoryItem">
+                <sequence>
+                    <element name="address" type="tns:AddressDescription"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="CompanyHistoryItemAmount">
+        <annotation>
+            <documentation>CompanyHistoryItemAmount element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:CompanyHistoryItem">
+                <sequence>
+                    <element name="amount" type="tns:Amount"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="CompanyHistoryItemLegalForm">
+        <annotation>
+            <documentation>CompanyHistoryItemLegalForm element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:CompanyHistoryItem">
+                <sequence>
+                    <element name="legalFormType" type="tns:LegalFormType"/>
+                    <element name="legalFormTypeOriginal" type="xs:string" minOccurs="0"/>
+                    <element name="legalFormText" type="xs:string" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="CompanyHistoryItemLocation">
+        <annotation>
+            <documentation>CompanyHistoryItemLocation element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:CompanyHistoryItem">
+                <sequence>
+                    <element name="location" type="tns:Location"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="CompanyHistoryItemText">
+        <annotation>
+            <documentation>CompanyHistoryItemText element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:CompanyHistoryItem">
+                <sequence>
+                    <element name="text" type="xs:string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="CompanyRegistrationData">
+        <annotation>
+            <documentation>CompanyRegistrationData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="registeredOfficeCity" type="xs:string" minOccurs="0"/>
+            <element name="foundingDate" type="string" minOccurs="0"/>
+            <element name="capital" type="tns:Amount" minOccurs="0"/>
+            <element name="capitalPayed" type="tns:Amount" minOccurs="0"/>
+            <element name="capitalInKind" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="auditingCompany" type="tns:CompanyBaseData" minOccurs="0"/>
+            <element name="hasAuditingCompany" type="tns:AuditingCompanyStatus" minOccurs="0"/>
+            <element name="purpose" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="CompanyDetailData">
+        <annotation>
+            <documentation>CompanyDetailData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="ultimateMotherCompany" type="tns:CompanyBaseData" minOccurs="0"/>
+            <element name="industryCodes" type="tns:IndustryCode" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="nrOfEmployees" type="tns:Range" minOccurs="0"/>
+            <element name="sizeClass" type="tns:CompanySizeClass" minOccurs="0"/>
+            <element name="turnoverCurrency" type="xs:string" minOccurs="0"/>
+            <element name="turnoverRange" type="tns:Range" minOccurs="0"/>
+            <element name="turnoverInExport" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="activityIndex" type="tns:ActivityIndex" minOccurs="0"/>
+            <element name="knownSince" type="xs:string" minOccurs="0"/>
+            <element name="dateFinancialStatement" type="xs:string" minOccurs="0"/>
+            <element name="dateFinancialStatementHandedIn" type="xs:string" minOccurs="0"/>
+            <element name="bankAccounts" type="tns:BankAccount" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="Range">
+        <annotation>
+            <documentation>Range element</documentation>
+        </annotation>
+        <sequence>
+            <element name="from" type="xs:decimal" minOccurs="0"/>
+            <element name="to" type="xs:decimal" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="Period">
+        <annotation>
+            <documentation>Period element</documentation>
+        </annotation>
+        <sequence>
+            <element name="startDate" type="xs:string" minOccurs="0"/>
+            <element name="endDate" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="BankAccount">
+        <annotation>
+            <documentation>BankAccount element</documentation>
+        </annotation>
+        <sequence>
+            <element name="bank" type="tns:CompanyAddressDescription" minOccurs="0"/>
+            <element name="bankDescription" type="xs:string" minOccurs="0"/>
+            <element name="localAccountNr" type="xs:string" minOccurs="0"/>
+            <element name="iban" type="xs:string" minOccurs="0"/>
+            <element name="swiftCode" type="xs:string" minOccurs="0"/>
+            <element name="currency" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="IdVerificationRequestData">
+        <annotation>
+            <documentation>IdVerificationRequestData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="documentImage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="document" type="tns:IdVerificationDocument" minOccurs="0"/>
+            <element name="person" type="tns:IdVerificationPerson" minOccurs="0"/>
+            <element name="documentType" type="tns:IdVerificationDocumentType" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="IdVerificationDocument">
+        <annotation>
+            <documentation>IdVerificationDocument element</documentation>
+        </annotation>
+        <sequence>
+            <element name="documentNumber" type="xs:string" minOccurs="0"/>
+            <element name="documentType" type="tns:IdVerificationDocumentType" minOccurs="0"/>
+            <element name="documentDescription" type="xs:string" minOccurs="0"/>
+            <element name="issuingStateOrOrganization" type="xs:string" minOccurs="0"/>
+            <element name="issuingDate" type="xs:string" minOccurs="0"/>
+            <element name="expirationDate" type="xs:string" minOccurs="0"/>
+            <element name="validityFromDate" type="xs:string" minOccurs="0"/>
+            <element name="signDate" type="xs:string" minOccurs="0"/>
+            <element name="mrz1" type="xs:string" minOccurs="0"/>
+            <element name="mrz2" type="xs:string" minOccurs="0"/>
+            <element name="mrz3" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="IdVerificationPerson">
+        <annotation>
+            <documentation>IdVerificationPerson element</documentation>
+        </annotation>
+        <sequence>
+            <element name="address" type="tns:PersonAddressDescription" minOccurs="0"/>
+            <element name="address1" type="xs:string" minOccurs="0"/>
+            <element name="address2" type="xs:string" minOccurs="0"/>
+            <element name="nationalIdentificationNumber" type="xs:string" minOccurs="0"/>
+            <element name="placeOfBirth" type="xs:string" minOccurs="0"/>
+            <element name="nationality" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="IdVerificationResponseData">
+        <annotation>
+            <documentation>IdVerificationResponseData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="content" type="tns:IdVerificationContent" minOccurs="0"/>
+            <element name="comparisonElements" type="tns:IdVerificationComparisonElement" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="processingResult" type="tns:IdVerificationProcessingResult"/>
+            <element name="warnings" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <!-- since 1.8  -->
+            <element name="rejectionReasons" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <!-- sience 1.9 -->
+        </sequence>
+    </complexType>
+    <complexType name="IdVerificationContent">
+        <annotation>
+            <documentation>IdVerificationContent element</documentation>
+        </annotation>
+        <sequence>
+            <element name="document" type="tns:IdVerificationDocument" minOccurs="0"/>
+            <element name="person" type="tns:IdVerificationPerson" minOccurs="0"/>
+            <element name="checks" type="tns:IdVerificationChecks" minOccurs="0"/>
+            <element name="documentImages" type="tns:BinaryData" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="BinaryData">
+        <annotation>
+            <documentation>BinaryData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="data" type="xs:string"/>
+            <element name="mimeType" type="xs:string"/>
+            <element name="dataClassification" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="IdVerificationChecks">
+        <annotation>
+            <documentation>IdVerificationChecks element</documentation>
+        </annotation>
+        <sequence>
+            <element name="isValid" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="isComplete" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="isCompositeCheckDigitVerified" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="isBirthDateVerified" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="isExpirationDateVerified" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="isDocumentNumberVerified" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="isIssuingStateOrOrganizationVerified" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="isNationalIdentificationNumberVerified" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="isNationalityVerified" type="tns:NullableBoolean" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="IdVerificationComparisonElement">
+        <annotation>
+            <documentation>IdVerificationComparisonElement element</documentation>
+        </annotation>
+        <sequence>
+            <element name="fieldName" type="xs:string" nillable="false"/>
+            <element name="providedValue" type="xs:string" nillable="false" minOccurs="0"/>
+            <element name="documentValue" type="xs:string" nillable="false" minOccurs="0"/>
+            <element name="percentage" type="xs:integer" nillable="false" minOccurs="0"/>
+            <!-- 1.5 only -->
+            <element name="mrzValue" type="xs:string" nillable="false" minOccurs="0"/>
+            <!-- since 1.6 -->
+            <element name="providedVsDocumentSimilarity" type="xs:integer" nillable="false" minOccurs="0"/>
+            <!-- since 1.6 -->
+            <element name="providedVsMrzSimilarity" type="xs:integer" nillable="false" minOccurs="0"/>
+            <!-- since 1.6 -->
+            <element name="documentVsMrzSimilarity" type="xs:integer" nillable="false" minOccurs="0"/>
+            <!-- since 1.6 -->
+        </sequence>
+        <!-- since 1.5 -->
+    </complexType>
+    <complexType name="SchufaResponseData">
+        <annotation>
+            <documentation>SchufaResponseData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="schufaIdentification" type="tns:SchufaIdentification" minOccurs="0"/>
+            <element name="schufaScore" type="tns:SchufaScore" minOccurs="0"/>
+            <element name="schufaFeatures" type="tns:SchufaBaseFeature" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="schufaPersonData" type="tns:SchufaPersonData" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="SchufaPersonData">
+        <annotation>
+            <documentation>SchufaPersonData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="title" type="xs:string" minOccurs="0"/>
+            <element name="placeOfBirth" type="xs:string" minOccurs="0"/>
+            <element name="previousAddress" type="tns:Location" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="SchufaIdentification">
+        <annotation>
+            <documentation>SchufaIdentification element</documentation>
+        </annotation>
+        <sequence>
+            <element name="identityReservationPerson" type="xs:boolean"/>
+            <element name="identityReservationAddress" type="xs:boolean"/>
+            <element name="personWithoutBirthdate" type="xs:boolean"/>
+        </sequence>
+    </complexType>
+    <complexType name="SchufaScore">
+        <annotation>
+            <documentation>SchufaScore element</documentation>
+        </annotation>
+        <sequence>
+            <element name="description" type="xs:string" minOccurs="0"/>
+            <element name="scoreValue" type="xs:integer" minOccurs="0"/>
+            <element name="riskQuota" type="xs:decimal" minOccurs="0"/>
+            <element name="scoreCategory" type="xs:string" minOccurs="0"/>
+            <element name="scoreText" type="xs:string" minOccurs="0"/>
+            <element name="scoreInfoText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="scoreError" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="SchufaBaseFeature">
+        <annotation>
+            <documentation>SchufaBaseFeature element</documentation>
+        </annotation>
+        <sequence>
+            <element name="type" type="xs:string" minOccurs="0"/>
+            <element name="featureWithoutBirthdate" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="ownFeature" type="tns:NullableBoolean" minOccurs="0"/>
+            <element name="featureCode" type="xs:string" minOccurs="0"/>
+            <element name="description" type="xs:string" minOccurs="0"/>
+            <element name="text" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+    <complexType name="SchufaFeature">
+        <annotation>
+            <documentation>SchufaFeature element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:SchufaBaseFeature">
+                <sequence>
+                    <element name="date" type="xs:string" minOccurs="0"/>
+                    <element name="accountNumber" type="xs:string" minOccurs="0"/>
+                    <element name="amount" type="tns:Amount" minOccurs="0"/>
+                    <element name="numberOfInstallments" type="xs:integer" minOccurs="0"/>
+                    <element name="installmentType" type="xs:integer" minOccurs="0"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="SchufaTextFeature">
+        <annotation>
+            <documentation>SchufaTextFeature element</documentation>
+        </annotation>
+        <complexContent>
+            <extension base="tns:SchufaBaseFeature"/>
+        </complexContent>
+    </complexType>
+
+    <complexType name="ESchKgJobData">
+        <annotation>
+            <documentation>ESchKgJobData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="language" type="xs:string" minOccurs="0"/>
+            <element name="claimList" type="tns:claimList" minOccurs="0"/>
+            <element name="paymentList" type="tns:paymentList" minOccurs="0"/>
+            <element name="reimbursementData" type="tns:ESchKgReimbursementData" minOccurs="0"/>
+            <element name="interestValuta" type="xs:string" minOccurs="0"/>
+            <element name="interestReason" type="xs:string" minOccurs="0"/>
+            <element name="fileList" type="tns:BinaryData" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="ESchKgOrderData">
+        <annotation>
+            <documentation>ESchKgOrderData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="orderId" type="xs:integer"/>
+            <element name="referenceNumber" type="xs:string" minOccurs="0"/>
+            <element name="externalId" type="xs:string" minOccurs="0"/>
+            <element name="caseGroup" type="xs:string" minOccurs="0"/>
+            <element name="caseGroupType" type="xs:string" minOccurs="0"/>
+            <element name="representative" type="xs:string" minOccurs="0"/>
+            <element name="address" type="tns:AddressDescription"/>
+            <element name="jobList" type="tns:jobList"/>
+            <element name="claimList" type="tns:claimList"/>
+            <element name="statusMessage" type="xs:string" minOccurs="0"/>
+            <element name="officeCaseNumber" type="xs:string" minOccurs="0"/>
+            <element name="officeStatus" type="xs:string" minOccurs="0"/>
+            <element name="deadlineFrom" type="xs:string" minOccurs="0"/>
+            <element name="deadlineTo" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="eSchKgJobDescription">
+        <annotation>
+            <documentation>ESchKgReimbursementData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="jobId"  type="xs:string" minOccurs="0"/>
+            <element name="enforcementStatus" type="tns:EnforcementStatus"/>
+            <element name="description" type="xs:string" minOccurs="0"/>
+            <element name="deliveryDate" type="xs:string" minOccurs="0"/>
+            <element name="statusMessage" type="xs:string" minOccurs="0"/>
+            <element name="note" type="xs:string" minOccurs="0"/>
+            <element name="created" type="xs:string" minOccurs="0"/>
+            <element name="createdBy" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="paymentList">
+        <annotation>
+            <documentation>PaymentList element</documentation>
+        </annotation>
+        <sequence>
+            <element name="eSchKgPaymentData" type="tns:ESchKgPaymentData" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="jobList">
+        <annotation>
+            <documentation>JobList element</documentation>
+        </annotation>
+        <sequence>
+            <element name="eSchKgJobDescription" type="tns:eSchKgJobDescription" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="claimList">
+        <annotation>
+            <documentation>ClaimList element</documentation>
+        </annotation>
+        <sequence>
+            <element name="eSchKgClaim" type="tns:ESchKgClaim" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="ESchKgClaim">
+        <annotation>
+            <documentation>ESchKgClaim element</documentation>
+        </annotation>
+        <sequence>
+            <element name="claimId" type="xs:string" minOccurs="0"/>
+            <element name="externalId" type="xs:string" minOccurs="0"/>
+            <element name="invoiceNo" type="xs:string" minOccurs="0"/>
+            <element name="reason" type="xs:string" minOccurs="0"/>
+            <element name="dateOfClaim" type="xs:string" minOccurs="0"/>
+            <element name="amount" type="tns:Amount" minOccurs="0"/>
+            <element name="timeLimit" type="xs:integer" minOccurs="0"/>
+            <element name="interestRate" type="xs:double" nillable="true" minOccurs="0"/>
+            <element name="type" type="tns:ClaimType" nillable="true" minOccurs="0"/>
+            <element name="jobId" type="xs:integer"/>
+            <element name="collocation" type="xs:integer"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="ESchKgPaymentData">
+        <annotation>
+            <documentation>ESchKgPaymentData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="paymentId" type="xs:string" minOccurs="0"/>
+            <element name="invoiceNo" type="xs:string" minOccurs="0"/>
+            <element name="reason" type="xs:string" minOccurs="0"/>
+            <element name="dateOfPayment" type="xs:string" minOccurs="0"/>
+            <element name="amount" type="tns:Amount" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="ESchKgReimbursementData">
+        <annotation>
+            <documentation>ESchKgReimbursementData element</documentation>
+        </annotation>
+        <sequence>
+            <element name="amount" type="tns:Amount" minOccurs="0"/>
+            <element name="valuta" type="xs:string" minOccurs="0"/>
+            <element name="reason" type="xs:string" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+    <simpleType name="Sex">
+        <annotation>
+            <documentation>Sex enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="MALE"/>
+            <enumeration value="FEMALE"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="LocationIdentificationType">
+        <annotation>
+            <documentation>LocationIdentificationType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="HOUSE_CONFIRMED"/>
+            <enumeration value="STREET_CONFIRMED_HOUSE_NOT_PROVIDED"/>
+            <enumeration value="STREET_CONFIRMED_HOUSE_NOT_IDENTIFIED"/>
+            <enumeration value="CITY_CONFIRMED_STREET_NOT_PROVIDED"/>
+            <enumeration value="CITY_CONFIRMED_STREET_NOT_IDENTIFIED"/>
+            <enumeration value="NOT_CONFIRMED"/>
+            <enumeration value="NOT_PROVIDED"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="IdentifierType">
+        <annotation>
+            <documentation>IdentifierType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="ADDRESS_ID"/>
+            <enumeration value="UNIT_ID"/>
+            <enumeration value="LIABLE_ID"/>
+            <enumeration value="CH_NUMBER"/>
+            <enumeration value="CH_UID"/>
+            <enumeration value="AT_FIRMENBUCHNUMMER"/>
+            <enumeration value="CH_LEGACY_ADDRESS_ID"/>   <!-- Version:1.1 -->
+            <enumeration value="CH_UID_VAT"/>   <!-- Version:1.2 -->
+            <enumeration value="AT_UID"/> <!-- Version:1.2 -->
+            <enumeration value="AT_OENB"/>     <!-- Version:1.2 -->
+            <enumeration value="AT_DVR_NR"/>    <!-- Version:1.2 -->
+            <enumeration value="SCHUFA_ID"/>   <!-- Version:1.7 -->
+        </restriction>
+    </simpleType>
+    <simpleType name="CharacterType">    <!-- Version:1.1 -->
+        <annotation>
+            <documentation>CharacterType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="IDENTITY"/>
+            <enumeration value="IDENTITY_WITH_CONFLICTING_HOUSE"/>
+            <enumeration value="IDENTITY_WITH_CONFLICTING_STREET"/>
+            <enumeration value="IDENTITY_WITH_CONFLICTING_CITY"/>
+            <enumeration value="LAST_NAME_IN_HOUSE"/>
+            <enumeration value="HOUSE_CONFIRMED"/>
+            <enumeration value="STREET_CONFIRMED"/>
+            <enumeration value="CITY_CONFIRMED"/>
+            <enumeration value="NOT_CONFIRMED"/>
+        </restriction>
+
+    </simpleType>
+    <simpleType name="ContactType">
+        <annotation>
+            <documentation>ContactType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="PHONE"/>
+            <enumeration value="MOBILE"/>
+            <enumeration value="FAX"/>
+            <enumeration value="EMAIL"/>
+            <enumeration value="WEB"/>
+            <enumeration value="OTHER"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="NameHint">
+        <annotation>
+            <documentation>NameHint enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="EMPTY"/>
+            <enumeration value="CONFIRMED"/>
+            <enumeration value="TYPO"/>
+            <enumeration value="PARTIAL"/>
+            <enumeration value="INCOMPLETE"/>
+            <enumeration value="PROMINENT"/>
+            <enumeration value="FICTIONAL"/>
+            <enumeration value="INVALID"/>
+            <enumeration value="NO_HINT"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="IdentificationType">
+        <annotation>
+            <documentation>IdentificationType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="IDENTITY_IN_HOUSE"/>
+            <enumeration value="IDENTITY_IN_STREET"/>
+            <enumeration value="IDENTITY_IN_CITY"/>
+            <enumeration value="IDENTITY_IN_UNIVERSE"/>
+            <enumeration value="OWNER"/>
+            <enumeration value="LASTNAME_IN_HOUSE"/>
+            <enumeration value="COMPANY_GROUP"/>
+            <enumeration value="NOT_IDENTIFIED"/>   <!-- Version:1.2 -->
+        </restriction>
+    </simpleType>
+    <simpleType name="Decision">
+        <annotation>
+            <documentation>Decision enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="LIGHT_GREEN"/>
+            <enumeration value="GREEN"/>
+            <enumeration value="YELLOW_GREEN"/>
+            <enumeration value="YELLOW"/>
+            <enumeration value="ORANGE"/>
+            <enumeration value="RED"/>
+            <enumeration value="DARK_RED"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="TargetReportFormat">
+        <annotation>
+            <documentation>TargetReportFormat enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="PDF"/>
+            <enumeration value="URL"/>
+            <enumeration value="NONE"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="PoiType">
+        <annotation>
+            <documentation>PoiType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="PDF"/>
+            <enumeration value="JPG"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="RiskClass">
+        <annotation>
+            <documentation>RiskClass enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="NO_NEGATIVE"/>
+            <enumeration value="PRE_LEGAL"/>
+            <enumeration value="LEGAL_INITIAL"/>
+            <enumeration value="LEGAL_ESCALATION"/>
+            <enumeration value="LEGAL_DEFAULTED"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="DebtType">
+        <annotation>
+            <documentation>DebtType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="INFORMATION"/>
+            <enumeration value="COLLECTION"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="PaymentStatus">
+        <annotation>
+            <documentation>PaymentStatus enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="IN_PROCESS"/>
+            <enumeration value="WRITTEN_OFF"/>
+            <enumeration value="PAID"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="TeledataConsumerScore">
+        <annotation>
+            <documentation>TeledataConsumerScore enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="A"/>
+            <enumeration value="B"/>
+            <enumeration value="C"/>
+            <enumeration value="D"/>
+            <enumeration value="E"/>
+            <enumeration value="TNI"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="PersonStatus">
+        <annotation>
+            <documentation>PersonStatus enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="ACTIVE"/>
+            <enumeration value="UNDERAGE"/>
+            <enumeration value="DECEASED"/>
+            <enumeration value="LEGAL_GUARDIANSHIP"/>
+            <enumeration value="ACTIVE_BD_UNKNOWN"/>
+            <enumeration value="ACTIVE_BD_PARTIALLY_UNKNOWN"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="AddressMatchResultType">
+        <annotation>
+            <documentation>AddressMatchResultType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="MATCH"/>
+            <enumeration value="CANDIDATES"/>
+            <enumeration value="NO_MATCH"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="OfflineReportStatus">
+        <annotation>
+            <documentation>OfflineReportStatus enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="PENDING"/>
+            <enumeration value="PROCESSED"/>
+            <enumeration value="UNKNOWN"/>
+            <enumeration value="MERGED"/>       <!--  v.1.3  -->
+
+        </restriction>
+    </simpleType>
+    <simpleType name="OfflineReportRejectionReason">   <!--  since 1.11 START  -->
+        <annotation>
+            <documentation>OfflineReportRejectionReason enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="ADDRESS_IS_BUSINESS_ADDRESS"/>
+            <enumeration value="ADDRESS_IS_SECONDARY_ADDRES"/>
+            <enumeration value="CROSS_BORDER_COMMUTER"/>
+            <enumeration value="DATA_PRIVACY_PROTECTION"/>
+            <enumeration value="DISCLOSURE_REJECTED"/>
+            <enumeration value="LEGAENTY_ADDRESS_UNKNOWN"/>
+            <enumeration value="LEGAENTY_DECEASED"/>
+            <enumeration value="LEGAENTY_UNKNOWN"/>
+            <enumeration value="OFFICE_REQUIRES_EXACT_BIRTHDATE"/>
+            <enumeration value="OTHER"/>
+            <enumeration value="PROOF_OF_BUSINESS_RELATIONSHIP_MISSING"/>
+            <enumeration value="PROOF_OF_INTEREST_MISSING"/>
+            <enumeration value="PROOF_OF_INTEREST_UNSIGNED"/>
+            <enumeration value="REGISTRATION_PENDING"/>
+        </restriction>
+    </simpleType>   <!--  since 1.11 END  -->
+
+    <simpleType name="Deliverability">
+        <annotation>
+            <documentation>Deliverability enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="SMALL"/>
+            <enumeration value="MEDIUM"/>
+            <enumeration value="HIGH"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="AuditingCompanyStatus">
+        <annotation>
+            <documentation>AuditingCompanyStatus enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="YES"/>
+            <enumeration value="NO_AUDITOR_NOT_MANDATORY"/>
+            <enumeration value="NO_AUDITOR_RESIGNED"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="CompanySizeClass">
+        <annotation>
+            <documentation>CompanySizeClass enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="S"/>
+            <enumeration value="M"/>
+            <enumeration value="L"/>
+            <enumeration value="XL"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="ActivityIndex">
+        <annotation>
+            <documentation>ActivityIndex enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="DELETED"/>
+            <enumeration value="HIGH"/>
+            <enumeration value="LOW"/>
+            <enumeration value="MEDIUM"/>
+            <enumeration value="VERY_HIGH"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="ActivityStatus">
+        <annotation>
+            <documentation>ActivityStatus enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="ACTIVE"/>
+            <enumeration value="INACTIVE"/>
+            <enumeration value="INSOLVENT"/>
+            <enumeration value="IN_LIQUIDATION"/>
+            <enumeration value="COMPOSITION_AGREEMENT"/>
+            <enumeration value="DELETED"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="LegalFormType">
+        <annotation>
+            <documentation>LegalFormType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="SINGLE_PERSON_COMPANY"/>
+            <enumeration value="MULTI_PERSON_COMPANY"/>
+            <enumeration value="LIMITED_COMPANY"/>
+            <enumeration value="PUBLIC"/>
+            <enumeration value="OTHER"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="RegistryType">
+        <annotation>
+            <documentation>RegistryType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="REGISTRY_OF_COMMERCE"/>
+            <enumeration value="REGISTER_OF_ASSOCIATIONS"/>
+            <enumeration value="TRADE_LICENCE"/>
+            <enumeration value="UNREGISTERED"/>
+            <enumeration value="UNKNOWN"/>
+            <enumeration value="OTHER"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="PaymentExpectedType">
+        <annotation>
+            <documentation>PaymentExpectedType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="IN_TIME"/>
+            <enumeration value="DELAYED_MINOR"/>
+            <enumeration value="DELAYED_MAJOR"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="SignatureType">
+        <annotation>
+            <documentation>SignatureType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="ALONE"/>
+            <enumeration value="COLLECTIVE_TWO"/>
+            <enumeration value="COLLECTIVE_THREE"/>
+            <enumeration value="COLLECTIVE_FOUR"/>
+            <enumeration value="WITHOUT"/>
+            <enumeration value="UNKNOWN"/>
+            <enumeration value="COMPLEX"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="HasDebts">
+        <annotation>
+            <documentation>HasDebts enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="TRUE"/>
+            <enumeration value="FALSE"/>
+            <enumeration value="BANKRUPT"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="FunctionType">
+        <annotation>
+            <documentation>FunctionType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="MANAGEMENT"/>
+            <enumeration value="SUPERVISORY_BOARD"/>
+            <enumeration value="SHAREHOLDERS"/>
+            <enumeration value="PROXIES"/>
+            <enumeration value="RECEIVERSHIP"/>
+            <enumeration value="OTHER"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="BusinessIndustryLicenseStatus">
+        <annotation>
+            <documentation>BusinessIndustryLicenseStatus enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="ACTIVE"/>
+            <enumeration value="INACTIVE"/>
+            <enumeration value="DELETED"/>
+            <enumeration value="UNKNOWN"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="PublicationCategory">
+        <annotation>
+            <documentation>PublicationCategory enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="NOT_CLASSIFIED"/>
+            <enumeration value="DELETION"/>
+            <enumeration value="CHANGE"/>
+            <enumeration value="NEW_REGISTRATION"/>
+            <enumeration value="CORRECTION"/>
+            <enumeration value="LIQUIDATION"/>
+            <enumeration value="PROCLAMATION"/>
+            <enumeration value="INSOLVENCY"/>
+            <enumeration value="REVOCATION"/>
+            <enumeration value="SHAREHOLDER"/>
+            <enumeration value="ANNUAL_BALANCE_SHEET"/>
+            <enumeration value="NOTICE_TO_CREDITORS"/>
+            <enumeration value="COMPOSITION_AGREEMENT"/>
+            <enumeration value="LEGAL_COLLECTION"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="CompanyHistoryItemType">
+        <annotation>
+            <documentation>CompanyHistoryItemType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="ACTIVITY_STATUS"/>
+            <enumeration value="AUDITING_COMPANY"/>
+            <enumeration value="CAPITAL"/>
+            <enumeration value="CAPITAL_PAYED"/>
+            <enumeration value="DOMICIL"/>
+            <enumeration value="LEGAL_FORM"/>
+            <enumeration value="NAME"/>
+            <enumeration value="REGISTERED_OFFICE_CITY"/>
+            <enumeration value="RESOLUTION"/>
+            <enumeration value="PURPOSE"/>
+            <enumeration value="OTHER"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="IdVerificationDocumentType">
+        <annotation>
+            <documentation>IdVerificationDocumentType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="DRIVING_LICENCE"/>
+            <enumeration value="IDENTITY_CARD"/>
+            <enumeration value="PASSPORT"/>
+            <enumeration value="RESIDENCE_PERMIT"/>
+            <enumeration value="UTILITY_BILL"/>
+            <enumeration value="UNDETERMINED"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="IdVerificationProcessingResult">
+        <annotation>
+            <documentation>IdVerificationProcessingResult enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="REJECTED"/>
+            <enumeration value="AUTOMATICLY_APPROVED"/>
+            <enumeration value="MANUALY_APPROVED"/>
+            <enumeration value="UNDETETERMINED"/>
+            <enumeration value="PROCESSING_FAILED"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="NullableBoolean">
+        <annotation>
+            <documentation>NullableBoolean enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="true"/>
+            <enumeration value="false"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="DataIssueStatus">  <!-- Version 1.12 -->
+        <annotation>
+            <documentation>DataIssueStatus enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="OPEN"/>
+            <enumeration value="FIXED_NOT_AVAILABLE"/>
+            <enumeration value="FIXED_AVAILABLE"/>
+            <enumeration value="WONT_FIX"/>
+            <enumeration value="CANCELED"/>
+        </restriction>
+
+    </simpleType>
+    <simpleType name="ControlPersonType">       <!-- Version 1.13 -->
+        <annotation>
+            <documentation>ControlPersonType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="CEO"/>
+            <enumeration value="HIGHEST_DECISION_MAKER"/>
+            <enumeration value="PARTICIPATION"/>
+            <enumeration value="OTHER"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="EnforcementStatus"> <!-- Version 1.14 -->
+        <annotation>
+            <documentation>EnforcementStatus enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="ENFORCEMENT_DEMAND"/>
+            <enumeration value="ENFORCEMENT_INSPECTION_RESULT"/>
+            <enumeration value="ENFORCEMENT_RECEJTED"/>
+            <enumeration value="PAYMENT_SUMMON_CONTESTED"/>
+            <enumeration value="PAYMENT_SUMMON_UNCONTESTED"/>
+            <enumeration value="DEBTOR_MOVED_AWAY"/>
+            <enumeration value="PAYMENT_SUMMON_UNDELIVERABLE"/>
+            <enumeration value="CONTINUATION_REQUEST"/>
+            <enumeration value="ENFORCEMENT_CANCELED"/>
+            <enumeration value="OTHER"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="ClaimType"> <!-- Version 1.14 -->
+        <annotation>
+            <documentation>ClaimType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="CLAIM"/>
+            <enumeration value="PAYMENT"/>
+            <enumeration value="DEFAULT_INTEREST"/>
+            <enumeration value="WORK_COMPENSATION"/>
+            <enumeration value="CLOSING"/>
+            <enumeration value="OFFICE_FEES"/>
+            <enumeration value="PAYMENT_PLAN"/>
+            <enumeration value="OTHER"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="OfflineReportType"> <!-- Version 1.15 -->
+        <annotation>
+            <documentation>OfflineReportType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="BA"/>
+            <enumeration value="BA_EXPRESS"/>
+            <enumeration value="EWK"/>
+            <enumeration value="EWK_EXPRESS"/>
+            <enumeration value="LGE"/>
+            <enumeration value="LGE_EXPRESS"/>
+        </restriction>
+    </simpleType>
+    
+    <simpleType name="ProviderPoiType"> <!-- Version 1.15 -->
+        <annotation>
+            <documentation>ProviderPoiType enumeration</documentation>
+        </annotation>
+        <restriction base="xs:string">
+            <enumeration value="PROOFOFINTEREST_WITHOUT_SIGNATURE"/>
+            <enumeration value="PROOFOFINTEREST_WITH_SIGNATURE"/>
+            <enumeration value="PROOFOFINTEREST_DEFAULT_POI_ALLOWED"/>
+            <enumeration value="PROOFOFINTEREST_NOT_REQUIRED"/>
+        </restriction>
+    </simpleType>
+
+</schema>
